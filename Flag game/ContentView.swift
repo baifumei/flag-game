@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var countries = ["UK", "USA", "Argentina", "Bangladesh", "Brazil", "Canada", "China", "Czech", "Denmark", "Finland", "Germany", "Greece", "Israel", "Japan", "Kazakhstan", "Russia", "Scotland", "SouthKorea", "Sweden", "Uzbekistan"].shuffled()
+    @State private var correctAnswer = Int.random(in: 0...2)
+    
     var body: some View {
         
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            LinearGradient(colors: [.black, .gray], startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+        }
     }
 }
 
