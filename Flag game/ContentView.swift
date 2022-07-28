@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State private var countries = ["UK", "USA", "Argentina", "Bangladesh", "Brazil", "Canada", "Czech", "Denmark", "Finland", "Germany", "Greece", "Japan", "Russia", "Scotland", "SouthKorea", "Sweden"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
+    @State private var score = 0
     
     var body: some View {
         
@@ -39,7 +40,22 @@ struct ContentView: View {
                             .clipShape(Rectangle())
                             .shadow(color: .black, radius: 3)
                     }
+                    
                 }
+                Divider()
+                    .padding(.top)
+                    .frame(width: 500,height: 1)
+                    .background(Color.white)
+                    .shadow(color: .black, radius: 3)
+                    
+                
+                Text("Score: \(score)")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.white)
+                
+                
+                Spacer()
             }
         }
         
