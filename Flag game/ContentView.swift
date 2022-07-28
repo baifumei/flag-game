@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Flag game
-//
-//  Created by Екатерина К on 27.07.2022.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -12,6 +5,8 @@ struct ContentView: View {
     @State private var countries = ["UK", "USA", "Argentina", "Bangladesh", "Brazil", "Canada", "Czech", "Denmark", "Finland", "Germany", "Greece", "Japan", "Russia", "Scotland", "SouthKorea", "Sweden"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var score = 0
+    @State private var showingScore = false
+    @State private var scoreTitle = ""
     
     var body: some View {
         
@@ -33,14 +28,14 @@ struct ContentView: View {
                 
                 ForEach(0..<3) { number in
                     Button(action: {
-                        //
+                        self.flagTapped(number)
+                        self.showingScore = true
                     }) {
                         Image(self.countries[number])
                             .frame(width: 250, height: 150)
-                            .clipShape(Rectangle())
-                            .shadow(color: .black, radius: 3)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .shadow(color: .white, radius: 3)
                     }
-                    
                 }
                 Divider()
                     .padding(.top)
@@ -57,8 +52,26 @@ struct ContentView: View {
                 
                 Spacer()
             }
+        }.alert(isPresented: $showingScore) {
+            Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) {
+                self.askQuestion()
+            })
         }
-        
+    }
+    
+    func askQuestion() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+    }
+    
+    func flagTapped(_ number: Int) {
+        if number == correctAnswer {
+            scoreTitle = "Your answer is right!"
+            score += 1
+        } else {
+            scoreTitle = "Nooo, your answer is wrong. This flag is \(countries[number])"
+            score -= 1
+        }
     }
 }
 
