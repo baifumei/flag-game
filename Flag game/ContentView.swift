@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            LinearGradient(colors: [.black, .gray], startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
+            LinearGradient(colors: [.black, .gray, .black], startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack {
                 VStack {
                     Text("Choose a flag:")
