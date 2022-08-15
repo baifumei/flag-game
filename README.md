@@ -1,5 +1,3 @@
-# solomein-course
-
 # Flag game 🇩🇰🇧🇩🇬🇧
 Challenge yourself with the flags quiz game, including 16 world flags. Test your knowledge and train your brain!
 
